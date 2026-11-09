@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --gold-primary: #C5A059;
+    --gold-light: #E2C582;
+    --gold-dark: #8C6A28;
+    --dark-base: #09090C;
+    --dark-surface: #111116;
+    --dark-elevated: #181820;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-gold: rgba(197, 160, 89, 0.28);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    background-color: #09090C;
+  }
+
+  body {
+    background-color: #09090C;
+    color: #E8E8ED;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Refined native scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #09090C;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #252530;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #C5A059;
+  }
+}
+
+.font-serif-luxury {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+/* Luxury gold text gradient with realistic champagne tone */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF0D0 0%, #DFBE74 50%, #B89242 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================================
+   NATIVE & LUXURY BUTTONS (Warm, tactile, smooth natural radius - NOT square)
+   ========================================================================= */
+
+.btn-luxury-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #09090C;
+  background: linear-gradient(180deg, #E6CB8E 0%, #C5A059 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.75rem; /* ~12px native smooth radius */
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 4px 14px -1px rgba(197, 160, 89, 0.25);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-luxury-primary:hover {
+  background: linear-gradient(180deg, #F0D9A3 0%, #D4AF67 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 6px 20px -1px rgba(197, 160, 89, 0.4);
+  transform: translateY(-1px);
+  color: #09090C;
+}
+
+.btn-luxury-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-luxury-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #E2E2E6;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.75rem;
+  backdrop-filter: blur(12px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-luxury-secondary:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(197, 160, 89, 0.45);
+  color: #FAF6EE;
+  transform: translateY(-1px);
+}
+
+.btn-luxury-secondary:active {
+  transform: scale(0.98);
+}
+
+/* =========================================================================
+   NATIVE GLASS CARD PANELS (Apple/Linear smooth radius)
+   ========================================================================= */
+
+.luxury-panel {
+  background: rgba(17, 17, 23, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.15rem; /* ~18px smooth radius */
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+}
+
+.luxury-panel-interactive {
+  background: rgba(17, 17, 23, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.15rem;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-panel-interactive:hover {
+  border-color: rgba(197, 160, 89, 0.35);
+  box-shadow: 0 14px 35px -5px rgba(197, 160, 89, 0.12), 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Leader dot line for menus */
+.menu-leader {
+  flex-grow: 1;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.15);
+  margin: 0 0.75rem;
+  margin-bottom: 5px;
+}
