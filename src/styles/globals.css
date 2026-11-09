@@ -164,3 +164,190 @@
   margin: 0 0.75rem;
   margin-bottom: 5px;
 }
+
+/* =========================================================================
+   404 PAGE
+   ========================================================================= */
+
+.nf-404 {
+  background: linear-gradient(
+    110deg,
+    #8c6a28 0%,
+    #e2c582 24%,
+    #fff3d4 38%,
+    #c5a059 54%,
+    #8c6a28 78%,
+    #e2c582 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: nf-sweep 7s linear infinite;
+  filter: drop-shadow(0 24px 60px rgba(197, 160, 89, 0.18));
+}
+
+.nf-echo {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(197, 160, 89, 0.14);
+}
+
+.nf-spark {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, #fff3d4 0%, #c5a059 55%, transparent 72%);
+  opacity: 0;
+  animation-name: nf-spark;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.nf-grid {
+  background-image:
+    linear-gradient(rgba(197, 160, 89, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 160, 89, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(circle at 50% 42%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(circle at 50% 42%, #000 0%, transparent 72%);
+  animation: nf-grid 14s linear infinite;
+}
+
+.nf-scan {
+  background: linear-gradient(180deg, transparent 0%, rgba(197, 160, 89, 0.1) 50%, transparent 100%);
+  animation: nf-scan 8s linear infinite;
+}
+
+.nf-float {
+  animation: nf-float 7s ease-in-out infinite;
+}
+
+.nf-glow {
+  animation: nf-glow 5s ease-in-out infinite;
+}
+
+.nf-rise {
+  animation: nf-rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.nf-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-120%) skewX(-12deg);
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(197, 160, 89, 0.18) 42%,
+    rgba(226, 197, 130, 0.85) 50%,
+    rgba(197, 160, 89, 0.18) 58%,
+    transparent 100%
+  );
+}
+
+.nf-wipe--active {
+  animation: nf-wipe 0.64s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes nf-sweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 220% 50%;
+  }
+}
+
+@keyframes nf-spark {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.4);
+  }
+  22% {
+    opacity: 0.75;
+  }
+  78% {
+    opacity: 0.12;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -52px, 0) scale(1);
+  }
+}
+
+@keyframes nf-grid {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 48px;
+  }
+}
+
+@keyframes nf-scan {
+  0% {
+    transform: translateY(-120%);
+  }
+  100% {
+    transform: translateY(320%);
+  }
+}
+
+@keyframes nf-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(-4deg);
+  }
+}
+
+@keyframes nf-glow {
+  0%,
+  100% {
+    opacity: 0.32;
+  }
+  50% {
+    opacity: 0.72;
+  }
+}
+
+@keyframes nf-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nf-wipe {
+  0% {
+    opacity: 0;
+    transform: translateX(-120%) skewX(-12deg);
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(120%) skewX(-12deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-404,
+  .nf-spark,
+  .nf-grid,
+  .nf-scan,
+  .nf-float,
+  .nf-glow,
+  .nf-rise,
+  .nf-wipe--active {
+    animation: none !important;
+  }
+}
