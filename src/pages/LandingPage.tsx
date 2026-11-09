@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Calendar, ArrowUpRight } from 'lucide-react';
-import SplashLoader from '../components/SplashLoader';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
+import Onboarding from '../components/Onboarding';
 import Navigation from '../components/navigation';
 import Hero from '../components/hero';
 import Stats from '../components/stats';
@@ -17,19 +17,26 @@ import Faqs from '../components/faqs';
 import Footer from '../components/footer';
 
 export default function LandingPage() {
-  const [showSplash, setShowSplash] = useState(() => {
-    // Show splash once per session
-    return !sessionStorage.getItem('aureum_splash_shown');
+  const navigate = useNavigate();
+  const [showOnboarding, setShowOnboarding] = useState(() => {
+    // Show the onboarding once per session
+    return !sessionStorage.getItem('aureum_onboarding_shown');
   });
 
-  const handleSplashComplete = () => {
-    sessionStorage.setItem('aureum_splash_shown', 'true');
-    setShowSplash(false);
+  const completeOnboarding = (destination?: string) => {
+    sessionStorage.setItem('aureum_onboarding_shown', 'true');
+    setShowOnboarding(false);
+    if (destination) navigate(destination);
   };
 
   return (
     <>
-      {showSplash && <SplashLoader onComplete={handleSplashComplete} />}
+      {showOnboarding && (
+        <Onboarding
+          onSkip={() => completeOnboarding()}
+          onFinish={() => completeOnboarding('/login')}
+        />
+      )}
 
       <div className="min-h-screen bg-[#08080A] text-[#EDEDF0] flex flex-col">
         <Navigation />
