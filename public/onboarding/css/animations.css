@@ -1,0 +1,292 @@
+/* ==========================================================================
+   AUREUM · Animations
+   Pure @keyframes. Only transform, opacity, filter, height and
+   stroke-dashoffset are animated so compositing stays close to 60 FPS.
+   Continuous motion is scoped to .slide.is-active to avoid off-screen work.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Ambient aurora
+   -------------------------------------------------------------------------- */
+@keyframes aurora-1 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, 5%, 0) scale(1.12);
+  }
+}
+
+@keyframes aurora-2 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-7%, -6%, 0) scale(1.15);
+  }
+}
+
+@keyframes aurora-3 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(8%, -4%, 0) scale(1.1);
+  }
+}
+
+.aurora__blob--1 {
+  animation: aurora-1 18s var(--ease-in-out) infinite;
+}
+.aurora__blob--2 {
+  animation: aurora-2 22s var(--ease-in-out) infinite;
+}
+.aurora__blob--3 {
+  animation: aurora-3 26s var(--ease-in-out) infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Staggered reveals
+   -------------------------------------------------------------------------- */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes reveal-scale {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.slide.is-active .reveal {
+  animation: reveal-up 0.6s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 100ms);
+}
+
+.slide.is-active .reveal-scale {
+  animation: reveal-scale 0.7s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 160ms);
+}
+
+/* --------------------------------------------------------------------------
+   Slide 1 · Calendar pop-in + ticking checks
+   -------------------------------------------------------------------------- */
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes check-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes tick-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(52, 211, 153, 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 7px rgba(52, 211, 153, 0.9));
+  }
+}
+
+@keyframes clock-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.slide.is-active .cal__slot {
+  animation: pop-in 0.55s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 120ms + 260ms);
+}
+
+.slide.is-active .cal__check path {
+  animation: check-draw 0.45s ease-out both;
+  animation-delay: calc(var(--i, 0) * 120ms + 720ms);
+}
+
+.slide.is-active .cal__check {
+  animation: tick-glow 2.4s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 120ms + 900ms);
+}
+
+.clock__hand {
+  transform-box: view-box;
+  transform-origin: 356px 66px;
+}
+
+.slide.is-active .clock__hand--hour {
+  animation: clock-spin 24s linear infinite;
+}
+
+.slide.is-active .clock__hand--min {
+  animation: clock-spin 8s linear infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Slide 2 · Sparks + breathing discount badge
+   -------------------------------------------------------------------------- */
+@keyframes spark-rise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(0.4);
+  }
+  30% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--sx, 0px), -64px, 0) scale(1.1);
+  }
+}
+
+@keyframes badge-breathe {
+  0%,
+  100% {
+    transform: translateZ(40px) scale(1);
+  }
+  50% {
+    transform: translateZ(40px) scale(1.06);
+  }
+}
+
+.slide.is-active .spark {
+  animation: spark-rise 2.8s var(--ease-in-out) infinite;
+  animation-delay: calc(var(--d, 0) * 0.38s);
+}
+
+.spark:nth-child(1) {
+  --sx: 12px;
+}
+.spark:nth-child(2) {
+  --sx: -10px;
+}
+.spark:nth-child(3) {
+  --sx: 8px;
+}
+.spark:nth-child(4) {
+  --sx: -14px;
+}
+.spark:nth-child(5) {
+  --sx: 16px;
+}
+.spark:nth-child(6) {
+  --sx: -8px;
+}
+
+.slide.is-active .promo__discount {
+  animation: badge-breathe 2.6s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Slide 3 · Bars + circular progress
+   -------------------------------------------------------------------------- */
+@keyframes bar-grow {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--bar-height, 50%);
+  }
+}
+
+@keyframes ring-fill {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: var(--ring-offset, 0);
+  }
+}
+
+.slide.is-active .bar {
+  animation: bar-grow 1s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 80ms + 220ms);
+}
+
+.slide.is-active .gauge__value {
+  animation: ring-fill 1.3s var(--ease-out) both;
+  animation-delay: 0.35s;
+}
+
+/* --------------------------------------------------------------------------
+   CTA · Final state + ripple + exit
+   -------------------------------------------------------------------------- */
+@keyframes final-glow {
+  0%,
+  100% {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 10px 30px -8px rgba(197, 160, 89, 0.5);
+  }
+  50% {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6),
+      0 14px 42px -6px rgba(197, 160, 89, 0.85);
+  }
+}
+
+@keyframes final-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@keyframes finish-out {
+  to {
+    opacity: 0;
+    transform: scale(1.03);
+    filter: blur(6px);
+  }
+}
+
+.btn--final {
+  animation: final-glow 2.4s ease-in-out infinite;
+}
+
+.btn--final .btn__label {
+  animation: final-pop 0.45s var(--ease-out) both;
+}
+
+.onboarding.is-finishing {
+  animation: finish-out 0.65s var(--ease-out) forwards;
+  pointer-events: none;
+}

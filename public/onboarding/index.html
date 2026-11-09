@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#09090C" />
+  <meta name="description" content="AUREUM Barber Club. Onboarding interactivo: agenda, marketing y control operativo." />
+  <title>AUREUM · Onboarding</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/onboarding.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+
+<body>
+  <div
+    class="onboarding"
+    id="onboarding"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="slide-title-0"
+    data-exit="../"
+    data-finish="/login"
+    tabindex="-1"
+  >
+    <!-- Ambient brand glow -->
+    <div class="aurora" aria-hidden="true">
+      <span class="aurora__blob aurora__blob--1"></span>
+      <span class="aurora__blob aurora__blob--2"></span>
+      <span class="aurora__blob aurora__blob--3"></span>
+      <span class="aurora__grain"></span>
+    </div>
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="icon-btn" id="back" type="button" aria-label="Diapositiva anterior" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5" />
+            <path d="m12 19-7-7 7-7" />
+          </svg>
+        </button>
+
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="6" r="3" />
+              <circle cx="6" cy="18" r="3" />
+              <line x1="20" y1="4" x2="8.12" y2="15.88" />
+              <line x1="14.47" y1="14.48" x2="20" y2="20" />
+              <line x1="8.12" y1="8.12" x2="12" y2="12" />
+            </svg>
+          </span>
+          <span class="brand__text">
+            <strong>AUREUM</strong>
+            <small>Barber Club</small>
+          </span>
+        </div>
+      </div>
+
+      <span class="topbar__tag">Guía rápida</span>
+    </header>
+
+    <!-- Step progress -->
+    <nav class="progress" id="progress" aria-label="Progreso del onboarding">
+      <button class="progress__seg" type="button" data-go="0" aria-label="Ir a Agenda y clientes"><span class="progress__fill"></span></button>
+      <button class="progress__seg" type="button" data-go="1" aria-label="Ir a Marketing y ofertas"><span class="progress__fill"></span></button>
+      <button class="progress__seg" type="button" data-go="2" aria-label="Ir a Control operativo"><span class="progress__fill"></span></button>
+    </nav>
+
+    <!-- Slides -->
+    <main class="stage" id="stage">
+      <div class="track" id="track">
+
+        <!-- ================= SLIDE 1 · AGENDA ================= -->
+        <section class="slide is-active" data-slide="0" aria-hidden="false">
+          <div class="slide__grid">
+            <div class="slide__copy">
+              <span class="pill reveal" style="--i: 0">
+                <svg class="pill__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <path d="M16 2v4M8 2v4M3 10h18" />
+                </svg>
+                Agenda y clientes
+              </span>
+
+              <h1 class="slide__title reveal" id="slide-title-0" style="--i: 1">
+                Optimiza tu Agenda y Clientes
+              </h1>
+
+              <p class="slide__desc reveal" style="--i: 2">
+                Simplifica el registro de tus clientes, reserva citas en tiempo real y lleva un
+                seguimiento detallado del historial de cada servicio sin complicaciones.
+              </p>
+
+              <p class="slide__hint reveal" style="--i: 3">
+                <kbd>←</kbd><kbd>→</kbd>
+                <span>Navega con el teclado o desliza</span>
+              </p>
+            </div>
+
+            <div class="slide__visual reveal-scale" style="--i: 1">
+              <div class="calendar-card glass">
+                <svg class="cal" viewBox="0 0 440 404" role="img" aria-label="Calendario animado con horarios y citas confirmadas">
+                  <defs>
+                    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#E2C582" />
+                      <stop offset="0.5" stop-color="#C5A059" />
+                      <stop offset="1" stop-color="#8C6A28" />
+                    </linearGradient>
+                    <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#181820" />
+                      <stop offset="1" stop-color="#111116" />
+                    </linearGradient>
+                    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+                      <feGaussianBlur stdDeviation="4" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+
+                  <rect x="8" y="8" width="424" height="388" rx="28" fill="url(#panelGrad)" />
+                  <rect x="8.5" y="8.5" width="423" height="387" rx="27.5" fill="none" stroke="rgba(197,160,89,0.24)" />
+                  <rect x="9" y="9" width="422" height="386" rx="27" fill="none" stroke="rgba(255,255,255,0.05)" />
+
+                  <text class="cal__eyebrow" x="34" y="48">AGENDA DE HOY</text>
+                  <text class="cal__date" x="34" y="82">14 de mayo</text>
+
+                  <!-- Analog clock -->
+                  <g filter="url(#softGlow)">
+                    <circle cx="356" cy="66" r="38" fill="#0D0D12" stroke="rgba(197,160,89,0.35)" />
+                    <circle cx="356" cy="66" r="31" fill="none" stroke="rgba(197,160,89,0.18)" stroke-dasharray="2 7" />
+                    <g class="clock__hand clock__hand--hour">
+                      <line x1="356" y1="66" x2="356" y2="44" stroke="#E2C582" stroke-width="3" stroke-linecap="round" />
+                    </g>
+                    <g class="clock__hand clock__hand--min">
+                      <line x1="356" y1="66" x2="356" y2="38" stroke="#C5A059" stroke-width="2" stroke-linecap="round" />
+                    </g>
+                    <circle cx="356" cy="66" r="3.2" fill="#E2C582" />
+                  </g>
+
+                  <!-- Slots -->
+                  <g class="cal__slot" style="--i: 0">
+                    <rect x="28" y="120" width="384" height="62" rx="16" fill="#15151C" stroke="rgba(197,160,89,0.28)" />
+                    <text class="cal__time" x="50" y="152" dominant-baseline="middle">10:30</text>
+                    <text class="cal__service" x="112" y="152" dominant-baseline="middle">Fade + perfilado de barba</text>
+                    <g class="cal__check" style="--i: 0">
+                      <circle cx="378" cy="151" r="14" fill="rgba(52,211,153,0.14)" stroke="rgba(52,211,153,0.55)" />
+                      <path d="M371 151 L376 156 L386 145" fill="none" stroke="#34d399" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                  </g>
+
+                  <g class="cal__slot" style="--i: 1">
+                    <rect x="28" y="194" width="384" height="62" rx="16" fill="#15151C" stroke="rgba(255,255,255,0.07)" />
+                    <text class="cal__time" x="50" y="226" dominant-baseline="middle">11:15</text>
+                    <text class="cal__service" x="112" y="226" dominant-baseline="middle">Ritual de toallas calientes</text>
+                    <rect x="344" y="214" width="68" height="24" rx="12" fill="rgba(251,191,36,0.1)" stroke="rgba(251,191,36,0.32)" />
+                    <text class="cal__pending" x="378" y="226" dominant-baseline="middle" text-anchor="middle">Pendiente</text>
+                  </g>
+
+                  <g class="cal__slot" style="--i: 2">
+                    <rect x="28" y="268" width="384" height="62" rx="16" fill="#15151C" stroke="rgba(197,160,89,0.28)" />
+                    <text class="cal__time" x="50" y="300" dominant-baseline="middle">12:00</text>
+                    <text class="cal__service" x="112" y="300" dominant-baseline="middle">Afeitado imperial con navaja</text>
+                    <g class="cal__check" style="--i: 2">
+                      <circle cx="378" cy="299" r="14" fill="rgba(52,211,153,0.14)" stroke="rgba(52,211,153,0.55)" />
+                      <path d="M371 299 L376 304 L386 293" fill="none" stroke="#34d399" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                  </g>
+
+                  <!-- Summary -->
+                  <rect x="28" y="346" width="384" height="40" rx="12" fill="rgba(197,160,89,0.06)" stroke="rgba(197,160,89,0.2)" />
+                  <text class="cal__summary" x="48" y="366" dominant-baseline="middle">3 citas agendadas hoy</text>
+                  <text class="cal__cta" x="392" y="366" dominant-baseline="middle" text-anchor="end">Ver agenda</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SLIDE 2 · MARKETING ================= -->
+        <section class="slide" data-slide="1" aria-hidden="true">
+          <div class="slide__grid">
+            <div class="slide__copy">
+              <span class="pill reveal" style="--i: 0">
+                <svg class="pill__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" />
+                  <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" />
+                </svg>
+                Marketing y ventas
+              </span>
+
+              <h1 class="slide__title reveal" id="slide-title-1" style="--i: 1">
+                Impulsa tus Servicios y Ofertas
+              </h1>
+
+              <p class="slide__desc reveal" style="--i: 2">
+                Promociona tus cortes, tratamientos y paquetes especiales. Atrae nuevos clientes
+                con catálogos visuales y promociones exclusivas para tu negocio.
+              </p>
+
+              <p class="slide__hint reveal" style="--i: 3">
+                <kbd>←</kbd><kbd>→</kbd>
+                <span>Pasa el cursor por la tarjeta y descubre el efecto 3D</span>
+              </p>
+            </div>
+
+            <div class="slide__visual reveal-scale" style="--i: 1">
+              <div class="tilt" data-tilt>
+                <div class="tilt__inner catalog glass">
+                  <span class="catalog__glare" aria-hidden="true"></span>
+
+                  <div class="catalog__sparks" aria-hidden="true">
+                    <span class="spark" style="left: 12%; top: 30%; --d: 0"></span>
+                    <span class="spark" style="left: 26%; top: 68%; --d: 1"></span>
+                    <span class="spark" style="left: 52%; top: 18%; --d: 2"></span>
+                    <span class="spark" style="left: 72%; top: 56%; --d: 3"></span>
+                    <span class="spark" style="left: 84%; top: 24%; --d: 4"></span>
+                    <span class="spark" style="left: 40%; top: 82%; --d: 5"></span>
+                  </div>
+
+                  <div class="catalog__head">
+                    <div class="catalog__title">
+                      <span class="catalog__mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="6" cy="6" r="3" />
+                          <circle cx="6" cy="18" r="3" />
+                          <line x1="20" y1="4" x2="8.12" y2="15.88" />
+                          <line x1="14.47" y1="14.48" x2="20" y2="20" />
+                          <line x1="8.12" y1="8.12" x2="12" y2="12" />
+                        </svg>
+                      </span>
+                      <div>
+                        <p class="catalog__name">Catálogo de servicios</p>
+                        <p class="catalog__sub">Promociones activas</p>
+                      </div>
+                    </div>
+                    <span class="live">En vivo</span>
+                  </div>
+
+                  <div class="promo">
+                    <span class="promo__badge">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 7l4-4 5 5-4 4z" />
+                        <path d="M14 14l7 7" />
+                        <path d="M13 13l4-4 4 4-4 4z" />
+                      </svg>
+                      Pack Ejecutivo
+                    </span>
+                    <p class="promo__title">Corte + Barba + Ritual</p>
+                    <p class="promo__sub">Reserva hoy y ahorra en tu primera visita</p>
+                    <span class="promo__discount">-25%</span>
+                  </div>
+
+                  <div class="catalog__grid">
+                    <div class="service">
+                      <div class="service__top">
+                        <span class="service__icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="6" cy="6" r="3" />
+                            <circle cx="6" cy="18" r="3" />
+                            <line x1="20" y1="4" x2="8.12" y2="15.88" />
+                            <line x1="14.47" y1="14.48" x2="20" y2="20" />
+                          </svg>
+                        </span>
+                        <span class="tag">-20%</span>
+                      </div>
+                      <p class="service__name">Corte Signature</p>
+                      <p class="service__price">28 € <s>35 €</s></p>
+                    </div>
+
+                    <div class="service">
+                      <div class="service__top">
+                        <span class="service__icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" />
+                          </svg>
+                        </span>
+                        <span class="tag tag--solid">Top</span>
+                      </div>
+                      <p class="service__name">Ritual de Barba</p>
+                      <p class="service__price">22 €</p>
+                    </div>
+                  </div>
+
+                  <div class="catalog__foot">
+                    <span>Comparte tu catálogo</span>
+                    <span class="catalog__foot-cta">
+                      Promocionar
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14" />
+                        <path d="m13 6 6 6-6 6" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SLIDE 3 · OPERACIONES ================= -->
+        <section class="slide" data-slide="2" aria-hidden="true">
+          <div class="slide__grid">
+            <div class="slide__copy">
+              <span class="pill reveal" style="--i: 0">
+                <svg class="pill__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 3v18h18" />
+                  <path d="M7 15l3-3 3 2 5-6" />
+                </svg>
+                Operaciones y equipo
+              </span>
+
+              <h1 class="slide__title reveal" id="slide-title-2" style="--i: 1">
+                Control Total de tu Equipo y Barbería
+              </h1>
+
+              <p class="slide__desc reveal" style="--i: 2">
+                Administra comisiones, turnos de barberos, inventario de productos y métricas
+                financieras clave en un solo panel centralizado.
+              </p>
+
+              <p class="slide__hint reveal" style="--i: 3">
+                <kbd>←</kbd><kbd>→</kbd>
+                <span>Todo tu negocio en una sola vista</span>
+              </p>
+            </div>
+
+            <div class="slide__visual reveal-scale" style="--i: 1">
+              <div class="dash glass">
+                <div class="dash__head">
+                  <div>
+                    <p class="dash__name">Resumen de hoy</p>
+                    <p class="dash__sub">Panel de gerencia</p>
+                  </div>
+                  <span class="trend">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M7 17l5-5 4 3 6-7" />
+                      <path d="M17 8h5v5" />
+                    </svg>
+                    +12%
+                  </span>
+                </div>
+
+                <div class="dash__metric">
+                  <span class="dash__metric-label">Ingresos del día</span>
+                  <span class="dash__metric-value" data-count="1284" data-suffix=" €">0 €</span>
+                </div>
+
+                <div class="dash__minis">
+                  <div class="mini">
+                    <span class="mini__label">Ticket medio</span>
+                    <span class="mini__value" data-count="49.4" data-decimals="1" data-suffix=" €">0 €</span>
+                  </div>
+                  <div class="mini">
+                    <span class="mini__label">Citas</span>
+                    <span class="mini__value" data-count="26">0</span>
+                  </div>
+                </div>
+
+                <div class="dash__body">
+                  <div class="chart">
+                    <div class="chart__bars" aria-hidden="true">
+                      <span class="bar" style="--i: 0; --bar-height: 42%"></span>
+                      <span class="bar" style="--i: 1; --bar-height: 64%"></span>
+                      <span class="bar" style="--i: 2; --bar-height: 50%"></span>
+                      <span class="bar" style="--i: 3; --bar-height: 82%"></span>
+                      <span class="bar" style="--i: 4; --bar-height: 68%"></span>
+                      <span class="bar" style="--i: 5; --bar-height: 94%"></span>
+                    </div>
+                    <div class="chart__labels" aria-hidden="true">
+                      <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span>
+                    </div>
+                  </div>
+
+                  <div class="gauge">
+                    <svg viewBox="0 0 120 120" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0" stop-color="#E2C582" />
+                          <stop offset="1" stop-color="#8C6A28" />
+                        </linearGradient>
+                      </defs>
+                      <circle class="gauge__track" cx="60" cy="60" r="52" pathLength="100" />
+                      <circle class="gauge__value" cx="60" cy="60" r="52" pathLength="100" style="--ring-offset: 13" />
+                    </svg>
+                    <div class="gauge__center">
+                      <strong data-count="87" data-suffix="%">0%</strong>
+                      <span>Ocupación</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="dash__stock">
+                  <span class="dash__stock-name">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 8l-9-5-9 5v8l9 5 9-5z" />
+                      <path d="M3 8l9 5 9-5" />
+                      <path d="M12 13v8" />
+                    </svg>
+                    Cera mate texturizante
+                  </span>
+                  <span class="stock-badge">Quedan 3</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Footer controls -->
+    <footer class="bottombar">
+      <button class="btn btn--ghost" id="skip" type="button">Saltar</button>
+
+      <nav class="dots" id="dots" aria-label="Diapositivas"></nav>
+
+      <button
+        class="btn btn--primary"
+        id="next"
+        type="button"
+        data-next-label="Siguiente"
+        data-final-label="Entrar al Dashboard"
+        data-final-label-short="Comenzar"
+      >
+        <span class="btn__check" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </span>
+        <span class="btn__label">Siguiente</span>
+        <span class="btn__arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="m13 6 6 6-6 6" />
+          </svg>
+        </span>
+      </button>
+    </footer>
+  </div>
+
+  <script src="js/app.js" type="module"></script>
+</body>
+</html>
